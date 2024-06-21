@@ -4,22 +4,22 @@
 document.addEventListener("DOMContentLoaded", function() {
     let buttons = document.getElementsByTagName("button");
 
-    for(let button of buttons) {
+    for (let button of buttons) {
         button.addEventListener("click", function() {
-            if(this.getAttribute("data-type") === "submit") {
+            if (this.getAttribute("data-type") === "submit") {
                 checkAnswer();
             } else {
                 let gameType = this.getAttribute("data-type");
                 runGame(gameType);
             }
-        })
+        });
     }
 
     document.getElementById("answer-box").addEventListener("keydown", function(event) {
         if (event.key === "Enter") {
             checkAnswer();
         }
-    })
+    });
 
     runGame("addition");
 });
@@ -90,8 +90,8 @@ function calculateCorrectAnswer() {
     } else if (operator === "/") {
         return [operand1 / operand2, "division"];
     } else {
-        alert(`Unexpected operator ${operator}`);
-        throw `Unimplemented opertor ${operator}. Aborting!`;
+        alert(`Unimplemented operator ${operator}`);
+        throw `Unimplemented operator ${operator}. Aborting!`;
     }
 
 }
@@ -106,7 +106,7 @@ function incrementScore() {
 
 
 /**
- * Gets the current tally of incorrect from the DOM and increments it by 1
+ * Gets the current tally of incorrect answers from the DOM and increments it by 1
  */
 function incrementWrongAnswers() {
     let oldScore = parseInt(document.getElementById("incorrect").innerText);
@@ -134,7 +134,7 @@ function displayMultiplyQuestion(operand1, operand2) {
 }
 
 function displayDivideQuestion(operand1, operand2) {
-    document.getElementById("operand1").textContent = operand1;
+    document.getElementById("operand1").textContent = operand1 * operand2;
     document.getElementById("operand2").textContent = operand2;
     document.getElementById("operator").textContent = "/";
 }
